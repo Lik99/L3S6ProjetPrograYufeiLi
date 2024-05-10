@@ -192,17 +192,20 @@ class FunctionBaseControleur {
 
     // Afficher la navigation de pagination - avis
     public function change_page_avis($page, $totalPages) {
-        $this->functionBaseModel->change_page_avis($page, $totalPages);
+        // $this->functionBaseModel->change_page_avis($page, $totalPages);
+        $this->functionBaseModel->change_page("avis1.php", $page_avis, $totalPages_avis, 6, "SELECT COUNT(*) AS totalItems FROM Avis;");
     }
 
     // Afficher la navigation de pagination - type
     public function change_page_type($page, $totalPages) {
-        $this->functionBaseModel->change_page_type($page, $totalPages);
+        // $this->functionBaseModel->change_page_type($page, $totalPages);
+        $this->functionBaseModel->change_page("type1.php", $page_type, $totalPages_type, 6, "SELECT COUNT(nomType) AS totalItems FROM Type;");
     }
 
     // Afficher la navigation de pagination - directeur
     public function change_page_dire($page_directeur, $totalPages_directeur) {
-        $this->functionBaseModel->change_page_dire($page_directeur, $totalPages_directeur);
+        // $this->functionBaseModel->change_page_dire($page_directeur, $totalPages_directeur);
+        $this->functionBaseModel->change_page("directeur1.php", $page_directeur, $totalPages_directeur, 6, "SELECT COUNT(*) AS totalItems FROM Directeur;");
     }
 }
 

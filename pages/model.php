@@ -51,7 +51,7 @@ class DirecteurModel {
     }
 
     // Afficher tous les directeurs
-   public  function all_directeur() {
+    public  function all_directeur() {
         if (isset($_SESSION['IdUser']) && isset($_SESSION['nomUser'])) {
             $this->connectDatabase();
 
@@ -369,7 +369,6 @@ class AvisModel {
         }
     }
     
-    
     // Afficher tous les avis
     function all_avis(){
         $conn = mysqli_connect("localhost", "root", "");
@@ -404,7 +403,7 @@ class AvisModel {
                 </li>';	
             //echo $_SESSION['IdFilm'];			
         }
-}
+    }
     
     // Montrer des films pouvant être commentés
     function dites_nous_vous_en_pensez($IdUser,$nomUser) {
@@ -980,75 +979,98 @@ class FunctionBaseModel {
         }
     }
 
-    // Changer de page dans la page - avis
-    function change_page_avis($page_avis, $totalPages_avis){
+    // // Changer de page dans la page - avis
+    // function change_page_avis($page_avis, $totalPages_avis){
+    //     $this->connectDatabase();
+        
+    //     $commentsPerPage = 6;// Nombre de commentaires par page
+    //     $reqTotalPage = "SELECT COUNT(*) AS totalComments FROM Avis;";// Obtenir le nombre total de commentaires dans la base de données
+    //     $resTotalPage = mysqli_query($this->conn, $reqTotalPage);
+    //     $rowTotalPage = mysqli_fetch_assoc($resTotalPage);
+    //     $totalComments = $rowTotalPage['totalComments'];
+    //     $totalPages_avis = ceil($totalComments / $commentsPerPage);// Calculer le nombre total de pages
+    //     $page_avis = isset($_GET['page']) ? intval($_GET['page']) : 1;// Obtenir le numéro de page actuel, par défaut la première page
+    //     $page_avis = max(min($page_avis, $totalPages_avis), 1);// S'assurer que le numéro de page est dans la plage valide
+    //     $offset = ($page_avis - 1) * $commentsPerPage;// Calculer la valeur OFFSET
+
+    //     echo '<div class="navigation clear">';
+    //     if ($page_avis < $totalPages_avis) { // Afficher le lien "Page suivante"
+    //         echo 'Page '.$page_avis.' / '.$totalPages_avis.'<p><a href="avis1.php?page=' . ($page_avis + 1) . '">Page suivante &raquo;</a></p>';
+    //     }
+    //     if ($page_avis > 1) { // Afficher le lien "Page précédente"
+    //         echo 'Page '.$page_avis.' / '.$totalPages_avis.'<p><div><a href="avis1.php?page=' . ($page_avis - 1) . '">&laquo; Page précédente</a></p>';
+    //     }
+    //     echo "</div>";
+    // }
+
+    // // Changer de page dans la page - type
+    // function change_page_type($page_type, $totalPages_type){
+        
+    //     $this->connectDatabase();
+        
+    //     $typesPerPage = 6;// Nombre de types par page
+    //     $reqTotalPage = "SELECT COUNT(nomType) AS totalType FROM Type;";// Obtenir le nombre total de types dans la base de données
+    //     $resTotalPage = mysqli_query($this->conn, $reqTotalPage);
+    //     $rowTotalPage = mysqli_fetch_assoc($resTotalPage);
+    //     $totalType = $rowTotalPage['totalType'];
+    //     $totalPages_type = ceil($totalType / $typesPerPage);// Calculer le nombre total de pages
+    //     $page_type = isset($_GET['page']) ? intval($_GET['page']) : 1;// Obtenir le numéro de page actuel, par défaut la première page
+    //     $page_type = max(min($page_type, $totalPages_type), 1);// S'assurer que le numéro de page est dans la plage valide
+    //     $offset = ($page_type - 1) * $typesPerPage;// Calculer la valeur OFFSET
+
+    //     echo '<div class="navigation clear">';
+    //     if ($page_type < $totalPages_type) { // Afficher le lien "Page suivante"
+    //         echo 'Page '.$page_type.' / '.$totalPages_type.'<p><a class="more" href="type1.php?page=' . ($page_type + 1) . '">Page suivante &raquo;</a></p>';
+    //     }
+    //     if ($page_type > 1) { // Afficher le lien "Page précédente"
+    //         echo 'Page '.$page_type.' / '.$totalPages_type.'<p><a class="more" href="type1.php?page=' . ($page_type - 1) . '">&laquo; Page précédente</a></p>';
+    //     }
+    //     echo "</div>";
+    // }
+
+    // // Changer de page dans la page - directeur
+    // function change_page_dire($page_directeur, $totalPages_directeur){
+    //     $this->connectDatabase();
+        
+    //     $directeursPerPage = 6;// Nombre de directeurs par page
+    //     $reqTotalPage = "SELECT COUNT(*) AS totalDirecteur FROM Directeur;";// Obtenir le nombre total de directeurs dans la base de données
+    //     $resTotalPage = mysqli_query($this->conn, $reqTotalPage);
+    //     $rowTotalPage = mysqli_fetch_assoc($resTotalPage);
+    //     $totalDirecteur = $rowTotalPage['totalDirecteur'];
+    //     $totalPages_directeur = ceil($totalDirecteur / $directeursPerPage);// Calculer le nombre total de pages
+    //     $page_directeur = isset($_GET['page']) ? intval($_GET['page']) : 1;// Obtenir le numéro de page actuel, par défaut la première page
+    //     $page_directeur = max(min($page_directeur, $totalPages_directeur), 1);// S'assurer que le numéro de page est dans la plage valide
+    //     $offset = ($page_directeur - 1) * $directeursPerPage;// Calculer la valeur OFFSET
+
+    //     echo '<div class="navigation clear">';
+    //     if ($page_directeur < $totalPages_directeur) { // Afficher le lien "Page suivante"
+    //         echo 'Page '.$page_directeur.' / '.$totalPages_directeur.'<p><a class="more" href="directeur1.php?page=' . ($page_directeur + 1) . '">Page suivante &raquo;</a></p>';
+    //     }
+    //     if ($page_directeur > 1) { // Afficher le lien "Page précédente"
+    //         echo 'Page '.$page_directeur.' / '.$totalPages_directeur.'<p><a class="more" href="directeur1.php?page=' . ($page_directeur - 1) . '">&laquo; Page précédente</a></p>';
+    //     }
+    //     echo "</div>";
+    // }
+
+    function change_page($pageName, &$currentPage, &$totalPages, $itemsPerPage, $countQuery) {
         $this->connectDatabase();
-        
-        $commentsPerPage = 6;// Nombre de commentaires par page
-        $reqTotalPage = "SELECT COUNT(*) AS totalComments FROM Avis;";// Obtenir le nombre total de commentaires dans la base de données
-        $resTotalPage = mysqli_query($this->conn, $reqTotalPage);
+    
+        $resTotalPage = mysqli_query($this->conn, $countQuery);
         $rowTotalPage = mysqli_fetch_assoc($resTotalPage);
-        $totalComments = $rowTotalPage['totalComments'];
-        $totalPages_avis = ceil($totalComments / $commentsPerPage);// Calculer le nombre total de pages
-        $page_avis = isset($_GET['page']) ? intval($_GET['page']) : 1;// Obtenir le numéro de page actuel, par défaut la première page
-        $page_avis = max(min($page_avis, $totalPages_avis), 1);// S'assurer que le numéro de page est dans la plage valide
-        $offset = ($page_avis - 1) * $commentsPerPage;// Calculer la valeur OFFSET
-
+        $totalItems = $rowTotalPage['totalItems'];
+        $totalPages = ceil($totalItems / $itemsPerPage);
+    
+        $currentPage = isset($_GET['page']) ? intval($_GET['page']) : 1;
+        $currentPage = max(min($currentPage, $totalPages), 1);
+    
+        $offset = ($currentPage - 1) * $itemsPerPage;
+    
         echo '<div class="navigation clear">';
-        if ($page_avis < $totalPages_avis) { // Afficher le lien "Page suivante"
-            echo 'Page '.$page_avis.' / '.$totalPages_avis.'<p><a href="avis1.php?page=' . ($page_avis + 1) . '">Page suivante &raquo;</a></p>';
+        if ($currentPage < $totalPages) {
+            echo 'Page '.$currentPage.' / '.$totalPages.'<p><a class="more" href="' . $pageName . '?page=' . ($currentPage + 1) . '">Page suivante &raquo;</a></p>';
         }
-        if ($page_avis > 1) { // Afficher le lien "Page précédente"
-            echo 'Page '.$page_avis.' / '.$totalPages_avis.'<p><div><a href="avis1.php?page=' . ($page_avis - 1) . '">&laquo; Page précédente</a></p>';
-        }
-        echo "</div>";
-    }
-
-    // Changer de page dans la page - type
-    function change_page_type($page_type, $totalPages_type){
-        
-        $this->connectDatabase();
-        
-        $typesPerPage = 6;// Nombre de types par page
-        $reqTotalPage = "SELECT COUNT(nomType) AS totalType FROM Type;";// Obtenir le nombre total de types dans la base de données
-        $resTotalPage = mysqli_query($this->conn, $reqTotalPage);
-        $rowTotalPage = mysqli_fetch_assoc($resTotalPage);
-        $totalType = $rowTotalPage['totalType'];
-        $totalPages_type = ceil($totalType / $typesPerPage);// Calculer le nombre total de pages
-        $page_type = isset($_GET['page']) ? intval($_GET['page']) : 1;// Obtenir le numéro de page actuel, par défaut la première page
-        $page_type = max(min($page_type, $totalPages_type), 1);// S'assurer que le numéro de page est dans la plage valide
-        $offset = ($page_type - 1) * $typesPerPage;// Calculer la valeur OFFSET
-
-        echo '<div class="navigation clear">';
-        if ($page_type < $totalPages_type) { // Afficher le lien "Page suivante"
-            echo 'Page '.$page_type.' / '.$totalPages_type.'<p><a class="more" href="type1.php?page=' . ($page_type + 1) . '">Page suivante &raquo;</a></p>';
-        }
-        if ($page_type > 1) { // Afficher le lien "Page précédente"
-            echo 'Page '.$page_type.' / '.$totalPages_type.'<p><a class="more" href="type1.php?page=' . ($page_type - 1) . '">&laquo; Page précédente</a></p>';
-        }
-        echo "</div>";
-    }
-
-    // Changer de page dans la page - directeur
-    function change_page_dire($page_directeur, $totalPages_directeur){
-        $this->connectDatabase();
-        
-        $directeursPerPage = 6;// Nombre de directeurs par page
-        $reqTotalPage = "SELECT COUNT(*) AS totalDirecteur FROM Directeur;";// Obtenir le nombre total de directeurs dans la base de données
-        $resTotalPage = mysqli_query($this->conn, $reqTotalPage);
-        $rowTotalPage = mysqli_fetch_assoc($resTotalPage);
-        $totalDirecteur = $rowTotalPage['totalDirecteur'];
-        $totalPages_directeur = ceil($totalDirecteur / $directeursPerPage);// Calculer le nombre total de pages
-        $page_directeur = isset($_GET['page']) ? intval($_GET['page']) : 1;// Obtenir le numéro de page actuel, par défaut la première page
-        $page_directeur = max(min($page_directeur, $totalPages_directeur), 1);// S'assurer que le numéro de page est dans la plage valide
-        $offset = ($page_directeur - 1) * $directeursPerPage;// Calculer la valeur OFFSET
-
-        echo '<div class="navigation clear">';
-        if ($page_directeur < $totalPages_directeur) { // Afficher le lien "Page suivante"
-            echo 'Page '.$page_directeur.' / '.$totalPages_directeur.'<p><a class="more" href="directeur1.php?page=' . ($page_directeur + 1) . '">Page suivante &raquo;</a></p>';
-        }
-        if ($page_directeur > 1) { // Afficher le lien "Page précédente"
-            echo 'Page '.$page_directeur.' / '.$totalPages_directeur.'<p><a class="more" href="directeur1.php?page=' . ($page_directeur - 1) . '">&laquo; Page précédente</a></p>';
+        if ($currentPage > 1) {
+            echo 'Page '.$currentPage.' / '.$totalPages.'<p><a class="more" href="' . $pageName . '?page=' . ($currentPage - 1) . '">&laquo; Page précédente</a></p>';
         }
         echo "</div>";
     }
